@@ -1,5 +1,8 @@
 i = 1
 COMMANDS =[]
+Rooms = []
+Paths = []
+
 loop do
   print "#{i}> "
   i+=1
@@ -28,6 +31,20 @@ loop do
       break
     when /\Alast\z/i
       puts COMMANDS[-2]
+    when /\Acreate\z/i
+      if params[0] == "room"
+        print "Enter Room > "
+        room = gets
+        puts "You created #{room}"
+        Rooms << room
+      elsif params[0] == "path"
+        print "Enter Path > "
+        path = gets
+        puts "You created #{path}"
+        Paths << path
+      else
+        puts "Create expects Room or Path"
+      end
     else
       puts 'Invalid command'
   end
